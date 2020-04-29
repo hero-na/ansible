@@ -4,6 +4,28 @@
   gather_facts: no
 
   tasks:
+  - name: ADD "/etc/hosts"
+    blockinfile: |
+      dest=/etc/hosts
+      content="
+        192.168.1.10 server
+        192.168.1.101 node101
+        192.168.1.102 node102
+      "
+
+  - name: ADD "/etc/ansible/hosts"
+    blockinfile: |
+      dest=/etc/ansible/hosts
+      content="
+        [CentOS]
+        node101
+        node102
+      "
+  - name: Install sshpass for Authentication
+    yum:
+      name: sshpass
+      state:  present
+
   - name: Install vim-enhanced
     yum:
       name: vim-enhanced
