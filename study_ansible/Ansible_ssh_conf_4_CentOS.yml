@@ -2,7 +2,7 @@
 - name: Ansible_ssh_conf_4_CentOS
   hosts: localhost
   gather_facts: no
-  
+
   tasks:
     - name: PasswordAuthentication change from no to yes
       replace:
