@@ -11,6 +11,8 @@
         192.168.1.10 server
         192.168.1.101 node101
         192.168.1.102 node102
+        192.168.1.101 node103
+        192.168.1.102 node104
       "
 
   - name: ADD "/etc/ansible/hosts"
@@ -20,6 +22,10 @@
         [CentOS]
         node101
         node102
+
+        [Ubuntu]
+        node103
+        node104
       "
   - name: Install sshpass for Authentication
     yum:

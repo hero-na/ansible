@@ -38,6 +38,66 @@ config.vm.define:"ansible-node102" do |cfg|
   cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
  end
 
+  #Ansible-Node101
+  config.vm.define:"ansible-node101" do |cfg|
+    cfg.vm.box = "centos/7"
+    cfg.vm.provider:virtualbox do |vb|
+      vb.name="Ansible-node101"
+      vb.customize ["modifyvm",:id,"--cpus",1]
+      vb.customize ["modifyvm",:id,"--memory",512]
+    end
+    cfg.vm.host_name="ansible-node101"
+    cfg.vm.synced_folder ".", "/vagrant", disabled: true
+    cfg.vm.network "public_network", ip: "192.168.1.101"
+    cfg.vm.network "forwarded_port", guest: 22, host: 19211, auto_correct: false, id: "ssh"
+    cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
+   end
+
+  #Ansible-Node102
+  config.vm.define:"ansible-node102" do |cfg|
+    cfg.vm.box = "centos/7"
+    cfg.vm.provider:virtualbox do |vb|
+      vb.name="Ansible-Node102"
+      vb.customize ["modifyvm",:id,"--cpus",1]
+     vb.customize ["modifyvm",:id,"--memory",512]
+    end
+    cfg.vm.host_name="ansible-node102"
+    cfg.vm.synced_folder ".", "/vagrant", disabled: true
+    cfg.vm.network "public_network", ip: "192.168.1.102"
+    cfg.vm.network "forwarded_port", guest: 22, host: 19212, auto_correct: false, id: "ssh"
+    cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
+   end
+
+ #Ansible-Node103
+ config.vm.define:"ansible-node103" do |cfg|
+  cfg.vm.box = "ubuntu/trusty64"
+  cfg.vm.provider:virtualbox do |vb|
+    vb.name="Ansible-node103"
+    vb.customize ["modifyvm",:id,"--cpus",1]
+    vb.customize ["modifyvm",:id,"--memory",512]
+  end
+  cfg.vm.host_name="ansible-node103"
+  cfg.vm.synced_folder ".", "/vagrant", disabled: true
+  cfg.vm.network "public_network", ip: "192.168.1.103"
+  cfg.vm.network "forwarded_port", guest: 22, host: 19213, auto_correct: false, id: "ssh"
+  #cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
+ end
+
+#Ansible-Node104
+config.vm.define:"ansible-node104" do |cfg|
+  cfg.vm.box = "ubuntu/trusty64"
+  cfg.vm.provider:virtualbox do |vb|
+    vb.name="Ansible-Node104"
+    vb.customize ["modifyvm",:id,"--cpus",1]
+   vb.customize ["modifyvm",:id,"--memory",512]
+  end
+  cfg.vm.host_name="ansible-node104"
+  cfg.vm.synced_folder ".", "/vagrant", disabled: true
+  cfg.vm.network "public_network", ip: "192.168.1.104"
+  cfg.vm.network "forwarded_port", guest: 22, host: 19214, auto_correct: false, id: "ssh"
+  #cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
+ end
+
  #================#
  # Ansible Server #
  #================#

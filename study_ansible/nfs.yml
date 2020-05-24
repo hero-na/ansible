@@ -30,7 +30,7 @@
         - name: make nfs_client directory
           file:
             path: /home/vagrant/nfs
-            state: direcroty
+            state: directory
 
         - name: mount point direrory as client
           become: yes
